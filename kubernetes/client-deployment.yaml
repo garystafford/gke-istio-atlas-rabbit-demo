@@ -1,10 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: C:\Program Files\Kubernetes\kompose.exe convert -f docker-compose-kub.yml
-    kompose.version: 1.4.0 (c7964e7)
-  creationTimestamp: null
   labels:
     io.kompose.service: client
   name: client
@@ -18,7 +14,7 @@ spec:
         io.kompose.service: client
     spec:
       containers:
-      - image: garystafford/voter-client:rabbitmq-0.4.55
+      - image: garystafford/voter-client:kub-aks-0.5.58
         name: client
         ports:
         - containerPort: 8080

@@ -1,10 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: C:\Program Files\Kubernetes\kompose.exe convert -f docker-compose-kub.yml
-    kompose.version: 1.4.0 (c7964e7)
-  creationTimestamp: null
   labels:
     io.kompose.service: voter
   name: voter
@@ -13,12 +9,11 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         io.kompose.service: voter
     spec:
       containers:
-      - image: garystafford/voter-service:kub-aks-0.5.241
+      - image: garystafford/voter-service:kub-aks-0.5.243
         name: voter
         ports:
         - containerPort: 8080

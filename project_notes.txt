@@ -169,3 +169,16 @@ az cosmosdb create `
 # Above command will automatically try to register resource provider below
 az provider register -n Microsoft.DocumentDB
 az provider show -n Microsoft.DocumentDB
+
+az aks scale `
+  --name AKS-Cluster-VoterDemo `
+  --resource-group RG-EastUS-AKS-VoterDemo `
+  --node-count 3
+
+https://crondev.com/kubernetes-nginx-ingress-controller/
+https://github.com/kubernetes/ingress-nginx/tree/master/deploy
+kubectl describe ingress
+kubectl replace -f <file_yaml>
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "//CN=api.voter-demo.com"
+kubectl create secret tls api-secret --key tls.key --cert tls.crt
+kubectl exec -it <pod> -- sh
