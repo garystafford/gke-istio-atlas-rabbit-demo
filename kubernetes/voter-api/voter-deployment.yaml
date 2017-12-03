@@ -1,21 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  namespace: voter-api
   labels:
-    io.kompose.service: election
-  name: election
+    io.kompose.service: voter
+  name: voter
 spec:
   replicas: 1
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: election
+        io.kompose.service: voter
     spec:
       containers:
-      - image: garystafford/election-service:kub-aks-0.5.40
-        name: election
+      - image: garystafford/voter-service:kub-aks-0.5.243
+        name: voter
         ports:
         - containerPort: 8080
         resources: {}
@@ -28,10 +28,10 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: azure-cosmosdb-election
+                name: azure-cosmosdb-voter
                 key: connection-string
         command: ["/bin/sh"]
-        args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /election/election-service.jar"]
+        args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
 status: {}

@@ -201,3 +201,25 @@ kubectl cp gateway-7757cbcfd8-b65vx:/etc/letsencrypt/ .
 Create secret for nginx ingress controller secret
 -------------------------------------------------
 kubectl create secret tls api-voter-demo-secret --key .\privkey1.pem --cert .\fullchain1.pem
+
+nginx-ingress
+-------------
+kubectl create -f .\namespace.yaml
+kubectl create secret tls api-voter-demo-secret `
+  --key .\privkey1.pem `
+  --cert .\fullchain1.pem `
+  --namepace=default
+kubectl create -f .\tcp-services-configmap.yaml
+kubectl create -f .\udp-services-configmap.yaml
+kubectl create -f .\configmap.yaml
+kubectl create -f .\default-backend.yaml # also contains servce
+kubectl create -f .\nginx-ingress-controller.yaml
+kubectl create -f .\nginx-ingress-controller-service.yaml
+kubectl get all --namespace=ingress-nginx
+kubectl create -f .\ingress
+
+voter-app
+---------
+kubectl create -f .\namespace.yaml
+kubectl create -f .\client-deployment.yaml
+kubectl create -f .\client-sevice.yaml

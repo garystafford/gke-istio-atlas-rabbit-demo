@@ -2,6 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: nginx-configuration
-  namespace: default
+  namespace: ingress-nginx
   labels:
     app: ingress-nginx

@@ -1,6 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  namespace: voter-api
   labels:
     io.kompose.service: candidate
   name: candidate

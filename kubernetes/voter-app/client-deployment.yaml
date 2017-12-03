@@ -1,6 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  namespace: voter-app
   labels:
     io.kompose.service: client
   name: client
