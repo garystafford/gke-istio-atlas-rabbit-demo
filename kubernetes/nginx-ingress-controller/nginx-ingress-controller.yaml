@@ -28,6 +28,7 @@ spec:
             - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
             - --annotations-prefix=nginx.ingress.kubernetes.io
+            - --default-ssl-certificate=$(POD_NAMESPACE)/api-voter-demo-secret
           env:
             - name: POD_NAME
               value: "nginx-ingress-controller"

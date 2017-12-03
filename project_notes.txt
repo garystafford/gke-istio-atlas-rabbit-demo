@@ -197,3 +197,7 @@ Combine private keys with PEM (letsencrypt/HAProxy Issue)
 https://stackoverflow.com/a/34336069/580268
 
 kubectl cp gateway-7757cbcfd8-b65vx:/etc/letsencrypt/ .
+
+Create secret for nginx ingress controller secret
+-------------------------------------------------
+kubectl create secret tls api-voter-demo-secret --key .\privkey1.pem --cert .\fullchain1.pem
