@@ -32,5 +32,6 @@ spec:
                 key: connection-string
         command: ["/bin/sh"]
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /election/election-service.jar"]
+        imagePullPolicy: Always
       restartPolicy: Always
 status: {}

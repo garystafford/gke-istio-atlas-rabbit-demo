@@ -2,7 +2,7 @@ version: '3'
 
 services:
   client:
-    image: garystafford/voter-client:kub-aks-0.58
+    image: garystafford/voter-client:kub-aks-0.59
     depends_on:
     - gateway
     hostname: client
@@ -12,7 +12,7 @@ services:
     - demo_overlay_net
 
   gateway:
-    image: garystafford/voter-api-gateway:kub-aks-0.5.1
+    image: garystafford/voter-api-gateway:kub-aks-0.5.4
     depends_on:
     - election
     - candidate

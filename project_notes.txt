@@ -182,3 +182,18 @@ kubectl replace -f <file_yaml>
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "//CN=api.voter-demo.com"
 kubectl create secret tls api-secret --key tls.key --cert tls.crt
 kubectl exec -it <pod> -- sh
+
+THIS WORKED
+===========
+https://gist.github.com/lmmendes/7fad9a2c8f389b39b6661d0945b72cb7
+certbot certonly --standalone --preferred-challenges http --http-01-port 63443 -d api.voter-demo.com
+certbot certonly --standalone --preferred-challenges http --http-01-port 63443 -d www.voter-demo.com,voter-demo.com
+Restart HAProxy
+---------------
+haproxy -D -f /usr/local/etc/haproxy/haproxy.cfg -p /var/run/haproxy.pid -sf $(cat /var/run/haproxy.pid)
+
+Combine private keys with PEM (letsencrypt/HAProxy Issue)
+---------------------------------------------------------
+https://stackoverflow.com/a/34336069/580268
+
+kubectl cp gateway-7757cbcfd8-b65vx:/etc/letsencrypt/ .
