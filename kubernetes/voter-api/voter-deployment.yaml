@@ -14,7 +14,7 @@ spec:
         io.kompose.service: voter
     spec:
       containers:
-      - image: garystafford/voter-service:kub-aks-0.5.243
+      - image: garystafford/voter-service:kub-aks-0.5.245
         name: voter
         ports:
         - containerPort: 8080

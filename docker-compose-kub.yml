@@ -24,7 +24,7 @@ services:
     - demo_overlay_net
 
   election:
-    image: garystafford/election-service:kub-aks-0.5.40
+    image: garystafford/election-service:kub-aks-0.5.44
     hostname: election
     ports:
     - "8080:8080/tcp"
@@ -37,7 +37,7 @@ services:
     - demo_overlay_net
 
   candidate:
-    image: garystafford/candidate-service:kub-aks-0.5.121
+    image: garystafford/candidate-service:kub-aks-0.5.127
     hostname: candidate
     ports:
     - "8080:8080/tcp"
@@ -50,7 +50,7 @@ services:
     - demo_overlay_net
 
   voter:
-    image: garystafford/voter-service:kub-aks-0.5.243
+    image: garystafford/voter-service:kub-aks-0.5.245
     hostname: voter
     ports:
     - "8080:8080/tcp"

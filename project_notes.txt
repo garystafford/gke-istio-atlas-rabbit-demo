@@ -205,10 +205,11 @@ kubectl create secret tls api-voter-demo-secret --key .\privkey1.pem --cert .\fu
 nginx-ingress
 -------------
 kubectl create -f .\namespace.yaml
-kubectl create secret tls api-voter-demo-secret `
-  --key .\privkey1.pem `
-  --cert .\fullchain1.pem `
-  --namepace=default
+kubectl create secret tls api-voter-demo-secret ^
+	--key ..\letsencrypt\archive\api.voter-demo.com\privkey1.pem ^
+	--cert ..\letsencrypt\archive\api.voter-demo.com\fullchain1.pem ^
+	--namespace=voter-api
+
 kubectl create -f .\tcp-services-configmap.yaml
 kubectl create -f .\udp-services-configmap.yaml
 kubectl create -f .\configmap.yaml
