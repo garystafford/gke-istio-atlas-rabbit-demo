@@ -14,7 +14,7 @@ spec:
         io.kompose.service: candidate
     spec:
       containers:
-        - image: garystafford/candidate-service:kub-aks-0.5.127
+        - image: garystafford/candidate-service:kub-aks-0.5.128
           name: candidate
           ports:
           - containerPort: 8080
