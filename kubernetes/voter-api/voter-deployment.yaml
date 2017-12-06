@@ -6,7 +6,7 @@ metadata:
     io.kompose.service: voter
   name: voter
 spec:
-  replicas: 1
+  replicas: 3
   strategy: {}
   template:
     metadata:

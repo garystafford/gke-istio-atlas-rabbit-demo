@@ -6,7 +6,7 @@ metadata:
     io.kompose.service: candidate
   name: candidate
 spec:
-  replicas: 1
+  replicas: 3
   strategy: {}
   template:
     metadata:

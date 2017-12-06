@@ -1,3 +1,7 @@
+REM Create Secrets
+
+kubectl create -f ..\namespace.yaml
+
 kubectl create ^
 	-f .\azure-cosmosdb-election-secret.yaml ^
 	-f .\azure-cosmosdb-candidate-secret.yaml ^

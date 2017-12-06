@@ -17,13 +17,26 @@ az group create `
 az aks create `
   --name AKS-Cluster-VoterDemo `
   --resource-group RG-EastUS-AKS-VoterDemo `
-  --node-count 1 `
+  --node-count 3 `
   --generate-ssh-keys `
   --kubernetes-version 1.8.2
+
+  az aks create `
+    --name AKS-Cluster-VoterDemo `
+    --resource-group RG-EastUS-AKS-VoterDemo `
+    --node-count 3 `
+    --ssh-key-value "C:\Users\gary.stafford\.ssh\id_rsa.pub" `
+    --kubernetes-version 1.8.2
 
 az aks get-credentials `
   --name AKS-Cluster-VoterDemo `
   --resource-group RG-EastUS-AKS-VoterDemo
+
+az aks show `
+  --name AKS-Cluster-VoterDemo `
+  --resource-group RG-EastUS-AKS-VoterDemo
+
+kubectl get nodes --output=wide
 
 az aks delete `
   --name AKS-Cluster-VoterDemo `
@@ -209,18 +222,3 @@ kubectl create secret tls api-voter-demo-secret ^
 	--key ..\letsencrypt\archive\api.voter-demo.com\privkey1.pem ^
 	--cert ..\letsencrypt\archive\api.voter-demo.com\fullchain1.pem ^
 	--namespace=voter-api
-
-kubectl create -f .\tcp-services-configmap.yaml
-kubectl create -f .\udp-services-configmap.yaml
-kubectl create -f .\configmap.yaml
-kubectl create -f .\default-backend.yaml # also contains servce
-kubectl create -f .\nginx-ingress-controller.yaml
-kubectl create -f .\nginx-ingress-controller-service.yaml
-kubectl get all --namespace=ingress-nginx
-kubectl create -f .\ingress
-
-voter-app
----------
-kubectl create -f .\namespace.yaml
-kubectl create -f .\client-deployment.yaml
-kubectl create -f .\client-sevice.yaml
