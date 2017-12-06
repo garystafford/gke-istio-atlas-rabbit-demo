@@ -14,7 +14,7 @@ spec:
         io.kompose.service: voter
     spec:
       containers:
-      - image: garystafford/voter-service:kub-aks-0.5.246
+      - image: garystafford/voter-service:kub-aks-0.5.247
         name: voter
         ports:
         - containerPort: 8080
@@ -31,7 +31,7 @@ spec:
                 name: azure-cosmosdb-voter
                 key: connection-string
         command: ["/bin/sh"]
-        args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
+        args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
 status: {}

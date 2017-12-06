@@ -24,39 +24,36 @@ services:
     - demo_overlay_net
 
   election:
-    image: garystafford/election-service:kub-aks-0.5.44
+    image: garystafford/election-service:kub-aks-0.5.46
     hostname: election
     ports:
     - "8080:8080/tcp"
     command: ["java",
       "-Dspring.profiles.active=kub-aks",
-      "-Dlogging.level.root=DEBUG",
       "-Djava.security.egd=file:/dev/./urandom",
       "-jar election/election-service.jar"]
     networks:
     - demo_overlay_net
 
   candidate:
-    image: garystafford/candidate-service:kub-aks-0.5.128
+    image: garystafford/candidate-service:kub-aks-0.5.130
     hostname: candidate
     ports:
     - "8080:8080/tcp"
     command: ["java",
       "-Dspring.profiles.active=kub-aks",
-      "-Dlogging.level.root=DEBUG",
       "-Djava.security.egd=file:/dev/./urandom",
       "-jar candidate/candidate-service.jar"]
     networks:
     - demo_overlay_net
 
   voter:
-    image: garystafford/voter-service:kub-aks-0.5.246
+    image: garystafford/voter-service:kub-aks-0.5.247
     hostname: voter
     ports:
     - "8080:8080/tcp"
     command: ["java",
       "-Dspring.profiles.active=kub-aks",
-      "-Dlogging.level.root=DEBUG",
       "-Djava.security.egd=file:/dev/./urandom",
       "-jar voter/voter-service.jar"]
     networks:

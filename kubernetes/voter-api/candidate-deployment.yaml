@@ -14,7 +14,7 @@ spec:
         io.kompose.service: candidate
     spec:
       containers:
-        - image: garystafford/candidate-service:kub-aks-0.5.128
+        - image: garystafford/candidate-service:kub-aks-0.5.130
           name: candidate
           ports:
           - containerPort: 8080
@@ -31,7 +31,7 @@ spec:
                   name: azure-cosmosdb-candidate
                   key: connection-string
           command: ["/bin/sh"]
-          args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]
+          args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]
           imagePullPolicy: Always
       restartPolicy: Always
 status: {}
