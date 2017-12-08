@@ -1,5 +1,5 @@
-# Azure AKS, Service Bus, CosmosDB Demo
+# Azure AKS, Service Bus, Cosmos DB Demo
 
 _Work in progress_
 
-![Architecture](AKS-SB-COSMOS.png)
+![Architecture](AKS_SB_CosmosDB.png)

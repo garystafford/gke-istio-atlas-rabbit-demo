@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# clean out all documents from CosmosDB database collections
+# clean out all documents from Cosmos DB database collections
 
 urls=(
   'https://api.voter-demo.com/election/drop/elections'
