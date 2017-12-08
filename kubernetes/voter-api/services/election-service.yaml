@@ -12,5 +12,3 @@ spec:
     targetPort: 8080
   selector:
     io.kompose.service: election
-status:
-  loadBalancer: {}

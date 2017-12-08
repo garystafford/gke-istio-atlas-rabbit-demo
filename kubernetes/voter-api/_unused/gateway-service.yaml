@@ -19,5 +19,3 @@ spec:
     targetPort: 63443
   selector:
     io.kompose.service: gateway
-status:
-  loadBalancer: {}

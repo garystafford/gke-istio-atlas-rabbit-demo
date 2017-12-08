@@ -10,16 +10,28 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         io.kompose.service: election
     spec:
       containers:
-      - image: garystafford/election-service:kub-aks-0.5.46
+      - image: garystafford/election-service:kub-aks-0.5.48
         name: election
         ports:
         - containerPort: 8080
-        resources: {}
+        readinessProbe:
+          httpGet:
+            path: /election/health
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /election/health
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 15
         env:
           - name: AZURE_SERVICE_BUS_CONNECTION_STRING
             valueFrom:

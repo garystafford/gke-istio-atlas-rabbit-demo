@@ -10,7 +10,6 @@ services:
     - "80:8080/tcp"
     networks:
     - demo_overlay_net
-
   gateway:
     image: garystafford/voter-api-gateway:kub-aks-0.5.4
     depends_on:
@@ -22,9 +21,8 @@ services:
     - "80:8080/tcp"
     networks:
     - demo_overlay_net
-
   election:
-    image: garystafford/election-service:kub-aks-0.5.46
+    image: garystafford/election-service:kub-aks-0.5.48
     hostname: election
     ports:
     - "8080:8080/tcp"
@@ -34,9 +32,8 @@ services:
       "-jar election/election-service.jar"]
     networks:
     - demo_overlay_net
-
   candidate:
-    image: garystafford/candidate-service:kub-aks-0.5.130
+    image: garystafford/candidate-service:kub-aks-0.5.132
     hostname: candidate
     ports:
     - "8080:8080/tcp"
@@ -46,9 +43,8 @@ services:
       "-jar candidate/candidate-service.jar"]
     networks:
     - demo_overlay_net
-
   voter:
-    image: garystafford/voter-service:kub-aks-0.5.247
+    image: garystafford/voter-service:kub-aks-0.5.249
     hostname: voter
     ports:
     - "8080:8080/tcp"

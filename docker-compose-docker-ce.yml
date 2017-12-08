@@ -29,7 +29,6 @@ services:
     environment:
     - "SERVICE_NAME=voter-client"
     - "SERVICE_TAGS=web-client"
-
   gateway:
     image: garystafford/voter-api-gateway:rabbitmq
     depends_on:
@@ -59,7 +58,6 @@ services:
     environment:
     - "SERVICE_NAME=gateway"
     - "SERVICE_TAGS=api gateway"
-
   election:
     image: garystafford/election-service:rabbitmq
     depends_on:
@@ -92,7 +90,6 @@ services:
       -Dlogging.level.root=DEBUG \
       -Djava.security.egd=file:/dev/./urandom \
       -jar election/election-service.jar"
-
   candidate:
     image: garystafford/candidate-service:rabbitmq
     depends_on:
@@ -125,7 +122,6 @@ services:
       -Dlogging.level.root=DEBUG \
       -Djava.security.egd=file:/dev/./urandom \
       -jar candidate/candidate-service.jar"
-
   voter:
     image: garystafford/voter-service:rabbitmq
     depends_on:
@@ -158,7 +154,6 @@ services:
       -Dlogging.level.root=DEBUG \
       -Djava.security.egd=file:/dev/./urandom \
       -jar voter/voter-service.jar"
-
   mongodb:
     image: mongo:latest
     command:
@@ -188,7 +183,6 @@ services:
     environment:
     - "SERVICE_NAME=mongodb"
     - "SERVICE_TAGS=database"
-
   rabbitmq:
     image: rabbitmq:management-alpine
     hostname: rabbitmq
@@ -217,11 +211,9 @@ services:
     environment:
     - "SERVICE_NAME=rabbitmq"
     - "SERVICE_TAGS=messaging"
-
 networks:
   demo_overlay_net:
     external: true
-
 volumes:
   demo_data_vol:
     external: true

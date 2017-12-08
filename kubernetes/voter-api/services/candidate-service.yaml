@@ -3,14 +3,12 @@ kind: Service
 metadata:
   namespace: voter-api
   labels:
-    io.kompose.service: voter
-  name: voter
+    io.kompose.service: candidate
+  name: candidate
 spec:
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
   selector:
-    io.kompose.service: voter
-status:
-  loadBalancer: {}
+    io.kompose.service: candidate

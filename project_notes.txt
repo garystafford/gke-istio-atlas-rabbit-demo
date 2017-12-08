@@ -18,15 +18,8 @@ az aks create `
   --name AKS-Cluster-VoterDemo `
   --resource-group RG-EastUS-AKS-VoterDemo `
   --node-count 3 `
-  --generate-ssh-keys `
+  --ssh-key-value "$HOME\.ssh\id_rsa.pub" `
   --kubernetes-version 1.8.2
-
-  az aks create `
-    --name AKS-Cluster-VoterDemo `
-    --resource-group RG-EastUS-AKS-VoterDemo `
-    --node-count 3 `
-    --ssh-key-value "C:\Users\gary.stafford\.ssh\id_rsa.pub" `
-    --kubernetes-version 1.8.2
 
 az aks get-credentials `
   --name AKS-Cluster-VoterDemo `
@@ -57,75 +50,31 @@ az aks browse `
   --name AKS-Cluster-VoterDemo `
   --resource-group RG-EastUS-AKS-VoterDemo
 
-Upgrade Kubernetes (didn't work!)
----------------------------------
-az aks get-versions `
-  --name AKS-Cluster-VoterDemo `
-  --resource-group RG-EastUS-AKS-VoterDemo
-
-az aks upgrade `
-  --name AKS-Cluster-VoterDemo `
-  --resource-group RG-EastUS-AKS-VoterDemo `
-  --kubernetes-version 1.8.2
-
-Re-build Images
----------------
-docker login
-
-./gradlew build -x test
-docker build -t garystafford/voter-service:0.2.105 .
-docker push garystafford/voter-service:0.2.105
-
-./gradlew build -x test
-docker build -t garystafford/candidate-service:0.2.28 .
-docker push garystafford/candidate-service:0.2.28
-
-grunt build
-docker build -t garystafford/voter-client:0.2.44 .
-docker push garystafford/voter-client:0.2.44
-
-docker build -t garystafford/voter-api-gateway:0.2.24 .
-docker push garystafford/voter-api-gateway:0.2.24
-
-
-Test Locally with Docker Compose vs. Kubernetes
------------------------------------------------
-docker-compose up -d
-docker ps
-
 Covert Docker Compose File with kompose
 ---------------------------------------
 kompose convert -f docker-compose.yml
-
-Create Kubenetes Resources
---------------------------
-kubectl create -f .\voter-deployment.yaml
-kubectl create -f .\voter-service.yaml
-kubectl get services
-kubectl describe service voter
-
-Populate Candidate and Voter data
------------------------------------
-http://api.voter-demo.com/candidate/simulation
-http://api.voter-demo.com/voter/simulation
 
 Other Commands
 --------------
 # Shell into Pod container
 kubectl get pods
-kubectl exec -it voter-6dd484fc87-nvv6d -- /bin/sh
+kubectl exec -it <pod> -- /bin/sh
 
 # replace Service
-kubectl replace --force -f .\voter-deployment.yaml
+kubectl apply -f <resource_file> --namespace=voter-api
+
+kubectl replace --force -f <resource_file>
 
 # delete pod (it will be replaced)
-kubectl delete pod gateway-7889d8bd4f-x6c74
+kubectl delete pod <pod>
 
 # view logs
 kubectl get pods
-kubectl logs voter-64c8b64dfc-2dznc
+kubectl logs <pod>
 
-kubectl get nodes
+kubectl get services
+kubectl describe service <service_name>
+
 kubectl config view
 kubectl cluster-info
 az aks get-versions `
@@ -150,7 +99,6 @@ https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-intro/
 https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-application
 https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 
-
 Secrets
 =======
 echo -n "mongodb://voterapp:<password>==@<subdomain>.documents.azure.com:10255/votes?ssl=true&replicaSet=globaldb" | base64
@@ -169,8 +117,8 @@ kubectl replace --force -f .\voter-deployment.yaml
 sh ./sample_data_elections.sh
 sh ./sample_data_candidates.sh
 
-CosmosDB
-========
+Cosmos DB
+=========
 https://docs.microsoft.com/en-us/azure/cosmos-db/create-mongodb-java
 az cosmosdb create `
 	--name voterapp `
@@ -187,14 +135,6 @@ az aks scale `
   --name AKS-Cluster-VoterDemo `
   --resource-group RG-EastUS-AKS-VoterDemo `
   --node-count 3
-
-https://crondev.com/kubernetes-nginx-ingress-controller/
-https://github.com/kubernetes/ingress-nginx/tree/master/deploy
-kubectl describe ingress
-kubectl replace -f <file_yaml>
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "//CN=api.voter-demo.com"
-kubectl create secret tls api-secret --key tls.key --cert tls.crt
-kubectl exec -it <pod> -- sh
 
 THIS WORKED
 ===========
