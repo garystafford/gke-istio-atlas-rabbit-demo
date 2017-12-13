@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: voter-ingress
+  namespace: voter-api
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - api.voter-demo.com
+    secretName: api-voter-demo-secret
+  rules:
+  - http:
+      paths:
+      - path: /candidate
+        backend:
+          serviceName: candidate
+          servicePort: 8080
+      - path: /election
+        backend:
+          serviceName: election
+          servicePort: 8080
+      - path: /voter
+        backend:
+          serviceName: voter
+          servicePort: 8080

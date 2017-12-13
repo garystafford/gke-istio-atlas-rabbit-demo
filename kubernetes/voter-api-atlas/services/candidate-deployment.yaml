@@ -22,13 +22,15 @@ spec:
         #   httpGet:
         #     path: /candidate/health
         #     port: 8080
-        #   initialDelaySeconds: 5
+        #     scheme: HTTP
+        # initialDelaySeconds: 5
         #   timeoutSeconds: 1
         #   periodSeconds: 15
         # livenessProbe:
         #   httpGet:
         #     path: /candidate/health
         #     port: 8080
+        #     scheme: HTTP
         #   initialDelaySeconds: 15
         #   timeoutSeconds: 1
         #   periodSeconds: 15
@@ -41,7 +43,7 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: azure-cosmosdb-candidate
+                name: mongodb-atlas-candidate
                 key: connection-string
         command: ["/bin/sh"]
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]

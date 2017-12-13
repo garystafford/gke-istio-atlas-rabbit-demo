@@ -3,31 +3,31 @@ kind: Deployment
 metadata:
   namespace: voter-api
   labels:
-    io.kompose.service: candidate
-  name: candidate
+    io.kompose.service: election
+  name: election
 spec:
   replicas: 3
   strategy: {}
   template:
     metadata:
       labels:
-        io.kompose.service: candidate
+        io.kompose.service: election
     spec:
       containers:
-      - image: garystafford/candidate-service:kub-aks-0.5.132
-        name: candidate
+      - image: garystafford/election-service:kub-aks-0.5.48
+        name: election
         ports:
         - containerPort: 8080
         # readinessProbe:
         #   httpGet:
-        #     path: /candidate/health
+        #     path: /election/health
         #     port: 8080
         #   initialDelaySeconds: 5
         #   timeoutSeconds: 1
         #   periodSeconds: 15
         # livenessProbe:
         #   httpGet:
-        #     path: /candidate/health
+        #     path: /election/health
         #     port: 8080
         #   initialDelaySeconds: 15
         #   timeoutSeconds: 1
@@ -41,10 +41,10 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: azure-cosmosdb-candidate
+                name: mongodb-atlas-election
                 key: connection-string
         command: ["/bin/sh"]
-        args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]
+        args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /election/election-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
 status: {}

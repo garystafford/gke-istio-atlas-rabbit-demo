@@ -1,17 +1,19 @@
-REM Create NGINX Ingress Controller
+REM apply NGINX Ingress Controller
 
-kubectl create -f .\namespace.yaml
+kubectl apply -f .\namespace.yaml
 
-kubectl create ^
+kubectl apply -f .\rbac.yaml
+
+kubectl apply ^
   -f .\tcp-services-configmap.yaml ^
   -f .\udp-services-configmap.yaml ^
   -f .\configmap.yaml
 
-kubectl create -f .\default-backend.yaml
+kubectl apply -f .\default-backend.yaml
 
 REM wait for default-backend to come up fully
 timeout 30
 
-kubectl create  ^
+kubectl apply  ^
   -f .\nginx-ingress-controller.yaml ^
   -f .\nginx-ingress-controller-service.yaml
