@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: voter
+        version: v1
     spec:
       containers:
       - image: garystafford/voter-service:kub-aks-0.5.249

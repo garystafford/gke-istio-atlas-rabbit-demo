@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: candidate
+        version: v1
     spec:
       containers:
       - image: garystafford/candidate-service:kub-aks-0.5.132

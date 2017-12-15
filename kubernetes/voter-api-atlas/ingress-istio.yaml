@@ -6,20 +6,20 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: istio
 spec:
-  tls:
-  - secretName: istio-ingress-certs # currently ignored
+  # tls:
+  # - secretName: istio-ingress-certs # currently ignored
   rules:
   - http:
       paths:
-      - path: /candidate
+      - path: /candidate/.*
         backend:
           serviceName: candidate
           servicePort: 8080
-      - path: /election
+      - path: /election/.*
         backend:
           serviceName: election
           servicePort: 8080
-      - path: /voter
+      - path: /voter/.*
         backend:
           serviceName: voter
           servicePort: 8080

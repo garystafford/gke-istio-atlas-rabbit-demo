@@ -7,4 +7,4 @@ kubectl apply ^
   -f .\services\voter-service.yaml
 
 REM Istio Ingress
-kubectl create -f .\ingress-istio.yaml
+kubectl apply -f .\ingress-istio.yaml

@@ -9,6 +9,6 @@ Please read the post. The post goes into details on using the resources in this 
 ![Architecture](AKS-Voter-API-Architecture.png)
 
 ### Postscript
-Added after the post was released, I added  an `kubernetes\voter-api-atlas\` version of the Voter API Kubernetes resources, designed for using MongoDB Atlas instead of Cosmos DB. The change involves the secrets used for the database connection strings.
+Added after the post was released, I added  an `kubernetes\voter-api-atlas\` version of the Voter API Kubernetes resources, designed for using MongoDB Atlas instead of Cosmos DB. The change involves the secrets used for the database connection strings. This version is also designed for user with Istio 0.3.0 instead of the NGINX Ingress Controller.
 
-Additionally, there is an `kubernetes\nginx-ingress-rbac\` version of the Kubernetes resources, which includes the NGINX Ingress Controller's RBAC code from their GitHuib repo. It is designed to be used with Istio on Google Cloud Platform.
+Additionally, there is an `kubernetes\nginx-ingress-rbac\` version of the Kubernetes resources, which includes the NGINX Ingress Controller's RBAC code from their GitHuib repo.

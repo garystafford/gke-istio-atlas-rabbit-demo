@@ -12,6 +12,7 @@ spec:
     metadata:
       labels:
         app: election
+        version: v1
     spec:
       containers:
       - image: garystafford/election-service:kub-aks-0.5.48
