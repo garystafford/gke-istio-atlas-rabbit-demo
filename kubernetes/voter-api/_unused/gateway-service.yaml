@@ -3,7 +3,7 @@ kind: Service
 metadata:
   namespace: voter-api
   labels:
-    io.kompose.service: gateway
+    app: gateway
   name: gateway
 spec:
   type: LoadBalancer
@@ -18,4 +18,4 @@ spec:
     port: 63443
     targetPort: 63443
   selector:
-    io.kompose.service: gateway
+    app: gateway

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   namespace: voter-api
   labels:
-    io.kompose.service: gateway
+    app: gateway
   name: gateway
 spec:
   replicas: 3
@@ -12,7 +12,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: gateway
+        app: gateway
     spec:
       containers:
       - image: garystafford/voter-api-gateway:kub-aks-0.5.4

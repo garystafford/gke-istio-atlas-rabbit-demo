@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   namespace: voter-api
   labels:
-    io.kompose.service: voter
+    app: voter
   name: voter
 spec:
   replicas: 3
@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        io.kompose.service: voter
+        app: voter
     spec:
       containers:
       - image: garystafford/voter-service:kub-aks-0.5.249
