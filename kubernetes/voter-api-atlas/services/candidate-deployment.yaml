@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/candidate-service:kub-aks-0.5.132
+      - image: garystafford/candidate-service:kub-aks-0.5.133
         name: candidate
         ports:
         - containerPort: 8080
@@ -44,7 +44,7 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: mongodb-atlas-candidate
+                name: azure-cosmosdb-voter
                 key: connection-string
         command: ["/bin/sh"]
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]

@@ -3,6 +3,7 @@
 # Drop all votes and POST new votes to MongoDB or Cosmos DB
 
 url="https://api.voter-demo.com"
+#url="http://localhost:8099"
 
 echo "Dropping all existing votes documents from votes DB..."
 echo "POSTing ${url}/voter/drop/votes"

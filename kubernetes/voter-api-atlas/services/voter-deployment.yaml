@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/voter-service:kub-aks-0.5.249
+      - image: garystafford/voter-service:kub-aks-0.5.250
         name: voter
         ports:
         - containerPort: 8080
@@ -34,6 +34,8 @@ spec:
         #   timeoutSeconds: 1
         #   periodSeconds: 15
         env:
+          - name: JAVA_OPTS
+            value: "-Dhttps.protocols=TLSv1.2"
           - name: AZURE_SERVICE_BUS_CONNECTION_STRING
             valueFrom:
               secretKeyRef:
@@ -42,10 +44,10 @@ spec:
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: mongodb-atlas-voter
+                name: azure-cosmosdb-voter
                 key: connection-string
         command: ["/bin/sh"]
-        args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
+        args: ["-c", "java -Dspring.profiles.active=kub-aks -Dlogging.level.root=DEBUG -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
 status: {}

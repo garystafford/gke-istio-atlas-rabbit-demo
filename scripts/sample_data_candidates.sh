@@ -3,7 +3,7 @@
 # Drop all candidates and POST new candidates to MongoDB or Cosmos DB
 
 url="https://api.voter-demo.com"
-
+#url="http://localhost:8097"
 candidates=(
   '{"firstName":"Mitt","lastName":"Romney","politicalParty":"Republican Party","election":"2012 Presidential Election","homeState":"Massachusetts","politcalExperience":"70th Governor of Massachusetts"}'
   '{"firstName":"Rocky","lastName":"Anderson","politicalParty":"Justice Party","election":"2012 Presidential Election","homeState":"Utah","politcalExperience":"33rd Mayor of Salt Lake City, Utah"}'

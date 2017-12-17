@@ -103,7 +103,7 @@ Cosmos DB
 =========
 https://docs.microsoft.com/en-us/azure/cosmos-db/create-mongodb-java
 az cosmosdb create `
-	--name voterapp `
+	--name voterapi `
 	--resource-group RG-EastUS-AKS-VoterDemo `
 	--location "East US=0" `
 	--kind MongoDB `
