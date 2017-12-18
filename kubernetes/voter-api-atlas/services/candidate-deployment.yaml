@@ -15,36 +15,36 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/candidate-service:kub-aks-0.5.133
+      - image: garystafford/candidate-service:gke-0.6.136
         name: candidate
         ports:
         - containerPort: 8080
-        # readinessProbe:
-        #   httpGet:
-        #     path: /candidate/health
-        #     port: 8080
-        #     scheme: HTTP
-        # initialDelaySeconds: 5
-        #   timeoutSeconds: 1
-        #   periodSeconds: 15
-        # livenessProbe:
-        #   httpGet:
-        #     path: /candidate/health
-        #     port: 8080
-        #     scheme: HTTP
-        #   initialDelaySeconds: 15
-        #   timeoutSeconds: 1
-        #   periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /candidate/health
+            port: 8080
+            scheme: HTTP
+        initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /candidate/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 15
         env:
-          - name: AZURE_SERVICE_BUS_CONNECTION_STRING
+          - name: SPRING_RABBITMQ_HOST
             valueFrom:
               secretKeyRef:
-                name: azure-service-bus
+                name: rabbitmq-connection-string
                 key: connection-string
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:
-                name: azure-cosmosdb-voter
+                name: mongodb-atlas-candidate
                 key: connection-string
         command: ["/bin/sh"]
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]
