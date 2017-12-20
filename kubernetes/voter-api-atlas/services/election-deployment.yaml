@@ -19,29 +19,29 @@ spec:
         name: election
         ports:
         - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /election/health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
-          periodSeconds: 15
-        livenessProbe:
-          httpGet:
-            path: /election/health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
-          periodSeconds: 15
+        # readinessProbe:
+        #   httpGet:
+        #     path: /election/health
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 1
+        #   periodSeconds: 15
+        # livenessProbe:
+        #   httpGet:
+        #     path: /election/health
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 1
+        #   periodSeconds: 15
         env:
           - name: SPRING_RABBITMQ_HOST
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string
                 key: host
-          - name: SPRING_RABBITMQ_VIRTUALHOST
+          - name: SPRING_RABBITMQ_VIRTUAL_HOST
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string

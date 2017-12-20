@@ -15,33 +15,33 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/candidate-service:gke-0.6.138
+      - image: garystafford/candidate-service:gke-0.6.139
         name: candidate
         ports:
         - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /candidate/health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
-          periodSeconds: 15
-        livenessProbe:
-          httpGet:
-            path: /candidate/health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
-          periodSeconds: 15
+        # readinessProbe:
+        #   httpGet:
+        #     path: /candidate/health
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 1
+        #   periodSeconds: 15
+        # livenessProbe:
+        #   httpGet:
+        #     path: /candidate/health
+        #     port: 8080
+        #     scheme: HTTP
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 1
+        #   periodSeconds: 15
         env:
           - name: SPRING_RABBITMQ_HOST
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string
                 key: host
-          - name: SPRING_RABBITMQ_VIRTUALHOST
+          - name: SPRING_RABBITMQ_VIRTUAL_HOST
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string
