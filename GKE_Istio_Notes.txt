@@ -35,8 +35,8 @@ kubectl apply `
 https://istio.io/docs/setup/kubernetes/quick-start-gke-dm.html
 
 # RBAC for Kubernetes Dashboard access
-kubectl create clusterrolebinding `
-  --user system:serviceaccount:kube-system:default `
+kubectl create clusterrolebinding \
+  --user system:serviceaccount:kube-system:default \
   kube-system-cluster-admin --clusterrole cluster-admin
 
 # Install Secrets (real values not kept in git project)

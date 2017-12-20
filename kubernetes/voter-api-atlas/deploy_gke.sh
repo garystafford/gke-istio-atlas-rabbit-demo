@@ -4,16 +4,17 @@
 # https://istio.io/docs/setup/kubernetes/sidecar-injection.html#pod-spec-requirements
 
 gcloud beta container \
-  --project "voter-api-kub-demo" clusters create "voter-api-istio-demo" \
+  clusters create "voter-api-istio-demo" \
+  --project "voter-api-kub-demo" \
   --enable-kubernetes-alpha \
-  --cluster-version "1.8.4-gke.0" \
+  --cluster-version "1.8.4-gke.1" \
   --username="admin" \
-  --zone "us-central1-a" \
-  --additional-zones "us-central1-b,us-central1-c"
-  --machine-type "n1-standard-1" \
-  --num-nodes "3" \
-  --labels environment=development
+  --zone "us-east1-b" \
+  --node-locations "us-east1-b","us-east1-c","us-east1-d" \
+  --machine-type "n1-standard-1" --num-nodes "1" \
+  --labels environment=development \
+  --enable-cloud-logging --enable-cloud-monitoring
 
 # Get Cluster Credentials
 gcloud container clusters get-credentials voter-api-istio-demo \
-  --zone us-central1-a --project voter-api-kub-demo
+  --zone us-east1-b --project voter-api-kub-demo

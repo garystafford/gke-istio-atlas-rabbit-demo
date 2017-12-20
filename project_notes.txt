@@ -144,3 +144,8 @@ kubectl create secret tls api-voter-demo-secret ^
 	--key ..\letsencrypt\archive\api.voter-demo.com\privkey1.pem ^
 	--cert ..\letsencrypt\archive\api.voter-demo.com\fullchain1.pem ^
 	--namespace=voter-api
+
+
+GCP Cleanup of GKE
+VPC Network -> Firewall rules
+Network services -> Load balancing
