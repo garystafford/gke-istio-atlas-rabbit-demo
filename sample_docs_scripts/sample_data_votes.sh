@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Drop all votes and POST new votes to MongoDB or Cosmos DB
+# drop all votes and post new votes to mongodb or cosmos db
 
 url="https://api.voter-demo.com"
 #url="http://localhost:8099"

@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/candidate-service:gke-0.6.136
+      - image: garystafford/candidate-service:gke-0.6.138
         name: candidate
         ports:
         - containerPort: 8080
@@ -24,7 +24,7 @@ spec:
             path: /candidate/health
             port: 8080
             scheme: HTTP
-        initialDelaySeconds: 5
+          initialDelaySeconds: 5
           timeoutSeconds: 1
           periodSeconds: 15
         livenessProbe:
@@ -40,7 +40,22 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string
-                key: connection-string
+                key: host
+          - name: SPRING_RABBITMQ_VIRTUALHOST
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: virtualHost
+          - name: SPRING_RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: username
+          - name: SPRING_RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: password
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # istioctl kube-inject Deployments
-# (formatted for Git Bash on Windows)
+# (formatted for git bash on windows)
 
 istioctl kube-inject –kubeconfig "~/.kube/config" \
   -f services/candidate-deployment.yaml \

@@ -15,30 +15,47 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/voter-service:gke-0.6.254
+      - image: garystafford/voter-service:gke-0.6.255
         name: voter
         ports:
         - containerPort: 8080
-        # readinessProbe:
-        #   httpGet:
-        #     path: /voter/health
-        #     port: 8080
-        #   initialDelaySeconds: 5
-        #   timeoutSeconds: 1
-        #   periodSeconds: 15
-        # livenessProbe:
-        #   httpGet:
-        #     path: /voter/health
-        #     port: 8080
-        #   initialDelaySeconds: 15
-        #   timeoutSeconds: 1
-        #   periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /voter/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /voter/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 15
+          timeoutSeconds: 1
+          periodSeconds: 15
         env:
           - name: SPRING_RABBITMQ_HOST
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-connection-string
-                key: connection-string
+                key: host
+          - name: SPRING_RABBITMQ_VIRTUALHOST
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: virtualHost
+          - name: SPRING_RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: username
+          - name: SPRING_RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-connection-string
+                key: password
           - name: SPRING_DATA_MONGODB_URI
             valueFrom:
               secretKeyRef:

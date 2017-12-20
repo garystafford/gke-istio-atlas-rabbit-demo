@@ -10,7 +10,7 @@ kubectl apply ^
   -f .\services\voter-service.yaml
 
 REM wait for services to come up fully
-timeout 120
+timeout 30
 
 REM Ingress
 kubectl apply -f .\ingress.yaml
