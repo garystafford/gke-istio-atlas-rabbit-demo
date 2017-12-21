@@ -4,6 +4,16 @@
 
 url="https://api.voter-demo.com"
 
+echo "Dropping all existing elections documents from candidates DB..."
+echo "POSTing ${url}/candidate/drop/elections"
+curl --request POST --url ${url}/candidate/drop/elections
+
+echo "Dropping all existing elections documents from elections DB..."
+echo "POSTing ${url}/election/drop/elections"
+curl --request POST --url ${url}/election/drop/elections
+
+echo ""
+
 for i in {1..100}
 do
   echo "POSTing ${election}"
