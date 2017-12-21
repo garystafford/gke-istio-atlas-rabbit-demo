@@ -3,6 +3,7 @@
 # deploy gke cluster
 # https://istio.io/docs/setup/kubernetes/sidecar-injection.html#pod-spec-requirements
 
+# deploy gke cluster
 gcloud beta container \
   clusters create "voter-api-istio-demo" \
   --project "voter-api-kub-demo" \
@@ -15,6 +16,6 @@ gcloud beta container \
   --labels environment=development \
   --enable-cloud-logging --enable-cloud-monitoring
 
-# Get Cluster Credentials
+# get cluster credentials
 gcloud container clusters get-credentials voter-api-istio-demo \
   --zone us-east1-b --project voter-api-kub-demo

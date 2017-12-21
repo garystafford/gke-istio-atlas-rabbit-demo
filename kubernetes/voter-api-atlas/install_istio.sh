@@ -3,14 +3,14 @@
 # install istio
 # https://cloud.google.com/kubernetes-engine/docs/tutorials/istio-on-gke
 
-export ISTIO_HOME=~/Documents/Personal/Google_Cloud_Article/istio-0.4.0/
+export ISTIO_HOME="~/Documents/Personal/Google_Cloud_Article/istio-0.4.0"
 
 kubectl create clusterrolebinding cluster-admin-binding \
   --user="$(gcloud config get-value core/account)" \
   --clusterrole=cluster-admin
 
 kubectl apply -f ${ISTIO_HOME}/install/kubernetes/istio-auth.yaml
-kubectl apply -f install/kubernetes/istio-initializer.yaml
+kubectl apply -f ${ISTIO_HOME}/install/kubernetes/istio-initializer.yaml
 
 # add-ons
 kubectl apply \
