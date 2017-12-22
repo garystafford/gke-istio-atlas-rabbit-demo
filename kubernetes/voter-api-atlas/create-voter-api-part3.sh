@@ -2,6 +2,9 @@
 
 # istioctl kube-inject Deployments
 
+# gcloud container clusters describe voter-api-istio-demo \
+#  --zone us-east1-b --project voter-api-kub-demo
+# ie. clusterIpv4Cidr: 10.12.0.0/14 and servicesIpv4Cidr: 10.15.240.0/20
 export IP_RANGES="10.12.0.0/14,10.15.240.0/20"
 
 # candidate service

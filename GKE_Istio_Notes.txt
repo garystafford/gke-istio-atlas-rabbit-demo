@@ -12,7 +12,7 @@ gcloud beta container `
 
 # Get Cluster Credentials
 gcloud container clusters get-credentials voter-api-istio-demo `
-  --zone us-central1-a --project voter-api-kub-demo
+  --zone us-east1-a --project voter-api-kub-demo
 
 # Install Istio 0.4.0
 https://cloud.google.com/kubernetes-engine/docs/tutorials/istio-on-gke
