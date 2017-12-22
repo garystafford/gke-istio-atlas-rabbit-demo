@@ -3,16 +3,20 @@
 # install istio, add-ons, and roles
 # https://cloud.google.com/kubernetes-engine/docs/tutorials/istio-on-gke
 
-export ISTIO_HOME="~/Documents/Personal/Google_Cloud_Article/istio-0.4.0"
+# export ISTIO_HOME="~/Documents/Personal/Google_Cloud_Article/istio-0.4.0"
+export ISTIO_HOME="/Applications/istio-0.4.0"
 
-# dashboard and istio roles
+# required dashboard and istio roles
 # kubectl get clusterrolebindings
+# Error from server (Forbidden): error when creating ".../istio-auth.yaml":
 kubectl apply \
-  -f ./other/kube-system-cluster-admin.yaml \ # dashboard
-  -f ./other/cluster-admin-binding.yaml # istio
+  -f ./other/kube-system-cluster-admin.yaml \
+  -f ./other/cluster-admin-binding.yaml
 
-kubectl apply -f ${ISTIO_HOME}/install/kubernetes/istio-auth.yaml
-kubectl apply -f ${ISTIO_HOME}/install/kubernetes/istio-initializer.yaml
+# istio
+kubectl apply \
+  -f ${ISTIO_HOME}/install/kubernetes/istio-auth.yaml \
+  -f ${ISTIO_HOME}/install/kubernetes/istio-initializer.yaml
 
 # add-ons
 kubectl apply \
