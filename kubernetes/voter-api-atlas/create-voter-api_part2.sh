@@ -10,9 +10,3 @@ kubectl apply \
 
 # voter api istio ingress
 kubectl apply -f ./other/ingress-istio.yaml
-
-# dashboard rbac
-# kubectl apply -f ./other/dashboard-admin.yaml
-kubectl create clusterrolebinding \
-  --user system:serviceaccount:kube-system:default \
-  kube-system-cluster-admin --clusterrole cluster-admin
