@@ -8,7 +8,7 @@ kubectl apply \
   -f ./services/candidate-service.yaml \
   -f ./services/voter-service.yaml
 
-# istio ingress
+# voter api istio ingress
 kubectl apply -f ./other/ingress-istio.yaml
 
 # dashboard rbac

@@ -7,7 +7,7 @@ metadata:
     kubernetes.io/ingress.class: istio
 spec:
   tls:
-  - secretName: istio-ingress-certs # currently ignored
+  - secretName: istio-ingress-certs
   rules:
   - http:
       paths:
