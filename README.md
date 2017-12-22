@@ -8,11 +8,11 @@ Sample vote, election, and candidate MongoDB documents may be created using the 
 
 Please read the post; it goes into details on using the resources in this GitHub repository.
 
-![Architecture](.\pics\AKS-Voter-API-Architecture.png)
+![Architecture](pics\AKS-Voter-API-Architecture.png)
 
 ### Postscript
 After the above post was released, I added a `kubernetes\voter-api-atlas\` version of the Voter API Kubernetes resources, designed for using MongoDB Atlas on GCP instead of Cosmos DB, and CloudAMQP's RabbitMQ on GCP instead of Azure Service Bus. The changes involved the secrets used for the database and messaging connection strings. This version is also designed for use with Istio v0.4.0 on GKE, instead of the NGINX Ingress Controller.
 
-![Architecture](.\pics\GKE_AMPQ_v1.png)
+![Architecture](pics\GKE_AMPQ_v1.png)
 
 Additionally, there is a `kubernetes\nginx-ingress-rbac\` version of the Kubernetes resources, which includes the NGINX Ingress Controller's RBAC code from their GitHub repo.
