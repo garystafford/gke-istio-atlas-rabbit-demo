@@ -3,15 +3,14 @@
 # install istio, add-ons, and roles
 # https://cloud.google.com/kubernetes-engine/docs/tutorials/istio-on-gke
 
-# export ISTIO_HOME="~/Documents/Personal/Google_Cloud_Article/istio-0.4.0"
 export ISTIO_HOME="/Applications/istio-0.4.0"
 
 # required dashboard and istio roles
-# kubectl get clusterrolebindings
 # Error from server (Forbidden): error when creating ".../istio-auth.yaml":
 kubectl apply \
   -f ./other/kube-system-cluster-admin.yaml \
   -f ./other/cluster-admin-binding.yaml
+# -f ./other/zipkin-to-stackdriver-creds.yaml
 
 # istio
 kubectl apply \
@@ -26,6 +25,5 @@ kubectl apply \
   -f ${ISTIO_HOME}/install/kubernetes/addons/zipkin.yaml \
   -f ${ISTIO_HOME}/install/kubernetes/addons/zipkin-to-stackdriver.yaml
 
-# configured properly
-  # -f ./other/zipkin-to-stackdriver-creds.yaml
+# alternate zipkin-to-stackdriver, configured fully
   # -f ./other/zipkin-to-stackdriver.yaml

@@ -11,4 +11,4 @@ kubectl apply \
 	-f ./secrets/mongodb-atlas-candidate-secret.yaml \
 	-f ./secrets/mongodb-atlas-voter-secret.yaml \
 	-f ./secrets/rabbitmq-connection-string-secret.yaml \
- 	-f ./secrets/istio-ingress-certs.yaml
+ 	-f ./secrets/istio-ingress-certs-secret.yaml
