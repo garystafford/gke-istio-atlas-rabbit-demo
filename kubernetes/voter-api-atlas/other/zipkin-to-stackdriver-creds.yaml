@@ -1,0 +1,14 @@
+# *** Add credentials json file contents ***
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zipkin-to-stackdriver-creds
+  labels:
+    name: zipkin-to-stackdriver-creds
+  namespace: istio-system
+data:
+  config: |-
+    {
+        <contents_of_gcp_credentials_json_file_goes_here>
+    }

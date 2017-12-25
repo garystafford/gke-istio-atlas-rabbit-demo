@@ -1,0 +1,57 @@
+# Revised copy of Istio v0.4.0 file with required env vars -
+# GOOGLE_APPLICATION_CREDENTIALS and PROJECT_ID added using a ConfigMap
+# *** Need to add credentials json file contents to zipkin-to-stackdriver-creds.yaml ***
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zipkin-to-stackdriver
+  namespace: istio-system
+  annotations:
+    sidecar.istio.io/inject: "false"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zipkin-to-stackdriver
+  template:
+    metadata:
+      name: zipkin-to-stackdriver
+      labels:
+        app: zipkin-to-stackdriver
+    spec:
+      containers:
+      - name: zipkin-to-stackdriver
+        image: gcr.io/stackdriver-trace-docker/zipkin-collector
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /tmp
+          name: zipkin-stackdriver-creds
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: "/tmp/zipkin-to-stackdriver-creds.json"
+        - name: PROJECT_ID
+          value: "voter-api-kub-demo"
+        ports:
+        - name: zipkin
+          containerPort: 9411
+      volumes:
+      - name: zipkin-to-stackdriver-creds
+        configMap:
+           name: zipkin-to-stackdriver-creds
+           items:
+            - key: config
+              path: zipkin-to-stackdriver-creds.json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin-to-stackdriver
+  namespace: istio-system
+spec:
+  ports:
+  - name: zipkin
+    port: 9411
+  selector:
+    app: zipkin-to-stackdriver
+---
