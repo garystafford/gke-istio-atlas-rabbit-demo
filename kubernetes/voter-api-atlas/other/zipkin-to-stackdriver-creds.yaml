@@ -1,5 +1,4 @@
-# *** Add credentials json file contents ***
-
+# add contents of credentials json file below
 apiVersion: v1
 kind: ConfigMap
 metadata:

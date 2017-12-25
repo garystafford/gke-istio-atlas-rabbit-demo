@@ -1,7 +1,6 @@
 # Revised copy of Istio v0.4.0 file with required env vars -
 # GOOGLE_APPLICATION_CREDENTIALS and PROJECT_ID added using a ConfigMap
 # *** Need to add credentials json file contents to zipkin-to-stackdriver-creds.yaml ***
-
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
