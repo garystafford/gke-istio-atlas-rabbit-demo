@@ -25,3 +25,7 @@ kubectl apply \
   -f ${ISTIO_HOME}/install/kubernetes/addons/servicegraph.yaml \
   -f ${ISTIO_HOME}/install/kubernetes/addons/zipkin.yaml \
   -f ${ISTIO_HOME}/install/kubernetes/addons/zipkin-to-stackdriver.yaml
+
+# configured properly
+  # -f ./other/zipkin-to-stackdriver-creds.yaml
+  # -f ./other/zipkin-to-stackdriver.yaml
