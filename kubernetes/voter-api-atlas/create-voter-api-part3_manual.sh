@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# manual sidecar injection with istioctl kube-inject
+# alternative manual sidecar injection with istioctl kube-inject
 
 # gcloud container clusters describe voter-api-istio-demo \
 #  --zone us-east1-b --project voter-api-kub-demo
