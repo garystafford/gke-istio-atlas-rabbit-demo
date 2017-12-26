@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# alternative manual sidecar injection with istioctl kube-inject
+# manual sidecar injection with istioctl kube-inject
+# istio egress of mongodb and amqp protocols
 
-# gcloud container clusters describe voter-api-istio-demo \
-#  --zone us-east1-b --project voter-api-kub-demo
-# ie. clusterIpv4Cidr: 10.12.0.0/14 and servicesIpv4Cidr: 10.15.240.0/20
 export IP_RANGES="10.12.0.0/14,10.15.240.0/20"
 
 # candidate service
