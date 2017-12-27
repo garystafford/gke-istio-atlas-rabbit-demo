@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/election-service:gke-0.6.55
+      - image: garystafford/election-service:gke-0.6.60
         name: election
         ports:
         - containerPort: 8080
