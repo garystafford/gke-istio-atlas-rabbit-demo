@@ -65,4 +65,3 @@ spec:
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /candidate/candidate-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
-status: {}

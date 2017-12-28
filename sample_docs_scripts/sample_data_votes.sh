@@ -12,3 +12,9 @@ curl --request POST --url ${url}/voter/drop/votes
 echo "Creating sample voting data..."
 echo "POSTing ${url}/voter/simulation/2016%20Presidential%20Election"
 curl --request GET --url ${url}/voter/simulation/2016%20Presidential%20Election
+
+echo "POSTing ${url}/voter/simulation/2012%20Presidential%20Election"
+curl --request GET --url ${url}/voter/simulation/2012%20Presidential%20Election
+
+echo "POSTing ${url}/voter/simulation/2014%20New%20York%20Gubernatorial%20Election"
+curl --request GET --url ${url}/voter/simulation/2014%20New%20York%20Gubernatorial%20Election

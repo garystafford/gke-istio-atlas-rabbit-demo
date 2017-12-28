@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/voter-service:gke-0.6.261
+      - image: garystafford/voter-service:gke-0.6.263
         name: voter
         ports:
         - containerPort: 8080
@@ -65,4 +65,3 @@ spec:
         args: ["-c", "java -Dspring.profiles.active=kub-aks -Djava.security.egd=file:/dev/./urandom -jar /voter/voter-service.jar"]
         imagePullPolicy: Always
       restartPolicy: Always
-status: {}

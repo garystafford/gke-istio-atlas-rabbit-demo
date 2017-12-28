@@ -10,6 +10,5 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 80
   selector:
     app: client

@@ -18,6 +18,11 @@ candidates=(
   '{"firstName":"Gary","lastName":"Johnson","politicalParty":"Libertarian Party","election":"2016 Presidential Election","homeState":"New Mexico","politcalExperience":"29th Governor of New Mexico"}'
   '{"firstName":"Darrell","lastName":"Castle","politicalParty":"Constitution Party","election":"2016 Presidential Election","homeState":"Tennessee","politcalExperience":"Commissioned Officer, U.S. Marine Corps"}'
   '{"firstName":"Hillary","lastName":"Clinton","politicalParty":"Democratic Party","election":"2016 Presidential Election","homeState":"New York","politcalExperience":"U.S. Senator, New York and 67th US Secretary of State"}'
+  '{"firstName":"Andrew","lastName":"Cuomo","politicalParty":"Democratic Party","election":"2014 New York Gubernatorial Election","homeState":"New York","politcalExperience":"Former Attorney General of New York and Incumbent Governor"}'
+  '{"firstName":"Rob","lastName":"Astorino","politicalParty":"Republican Party","election":"2014 New York Gubernatorial Election","homeState":"New York","politcalExperience":"County Executive of Westchester County"}'
+  '{"firstName":"Howie","lastName":"Hawkins","politicalParty":"Green Party","election":"2014 New York Gubernatorial Election","homeState":"New York","politcalExperience":"None"}'
+  '{"firstName":"Michael","lastName":"McDermott","politicalParty":"Libertarian Party","election":"2014 New York Gubernatorial Election","homeState":"New York","politcalExperience":"None"}'
+  '{"firstName":"Steven","lastName":"Cohn","politicalParty":"Sapient Party","election":"2014 New York Gubernatorial Election","homeState":"New York","politcalExperience":"None"}'
 )
 
 echo "Dropping all existing candidate documents from votes DB..."
@@ -28,8 +33,7 @@ echo "Dropping all existing candidate documents from candidates DB..."
 echo "POSTing ${url}/candidate/drop/candidates"
 curl --request POST --url ${url}/candidate/drop/candidates
 
-echo ""
-
+echo "Creating sample candidate data..."
 for candidate in "${candidates[@]}"
 do
   echo "POSTing ${candidate}"
