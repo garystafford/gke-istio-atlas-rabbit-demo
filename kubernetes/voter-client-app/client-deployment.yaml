@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: voter-client
+  labels:
+    app: client
+  name: client
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: client
+        version: v1
+    spec:
+      containers:
+      - image: garystafford/voter-client:angular-0.6.69
+        name: client
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+      restartPolicy: Always
