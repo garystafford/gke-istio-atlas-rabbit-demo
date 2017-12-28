@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/candidate-service:gke-0.6.144
+      - image: garystafford/candidate-service:gke-0.6.145
         name: candidate
         ports:
         - containerPort: 8080
