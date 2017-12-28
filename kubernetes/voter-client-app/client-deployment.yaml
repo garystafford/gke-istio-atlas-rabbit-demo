@@ -15,7 +15,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: garystafford/voter-client:angular-0.6.70
+      - image: garystafford/voter-client:angular-0.6.74
         name: client
         ports:
         - containerPort: 80
